@@ -1,0 +1,17 @@
+{
+    "name": "ratingstar/contao-seal-bundle",
+    "description": "RatingStar-Siegel und Google-Sterne (Rich Snippets) für Contao.",
+    "type": "contao-bundle",
+    "license": "proprietary",
+    "require": {
+        "contao/core-bundle": "^5.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "RatingStar\\ContaoSealBundle\\": "src/"
+        }
+    },
+    "extra": {
+        "contao-manager-plugin": "RatingStar\\ContaoSealBundle\\ContaoManager\\Plugin"
+    }
+}
