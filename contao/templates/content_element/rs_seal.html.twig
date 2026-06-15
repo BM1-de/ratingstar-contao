@@ -1,0 +1,41 @@
+{% extends '@Contao/content_element/_base.html.twig' %}
+
+{% block content %}
+    {% if as_editor_view %}
+        {# Back end preview: seal.js does not run here, so show a hint instead
+           of an empty node. #}
+        {% if has_slug %}
+            <p class="tl_gray">RatingStar-Siegel — Variante „{{ variant_label }}", Slug „{{ slug }}"{% if position %}, Position „{{ position }}"{% endif %}</p>
+        {% else %}
+            <p class="tl_gray">RatingStar-Siegel — kein Slug konfiguriert. Slug auf der Root-Seite (RatingStar-Einstellungen) oder hier am Element hinterlegen.</p>
+        {% endif %}
+    {% elseif has_slug %}
+        {# Official embed markup (CONTRACT.md §4). seal.js scans every .rs-seal
+           node and renders/degrades the widget itself. All attribute values
+           are HTML-escaped by attrs(). #}
+        {% set seal_attributes = attrs()
+            .addClass('rs-seal')
+            .set('data-slug', slug)
+            .set('data-variant', variant)
+        %}
+        {% if position %}
+            {% set seal_attributes = seal_attributes.set('data-position', position) %}
+        {% endif %}
+        <div{{ seal_attributes }}></div>
+    {% endif %}
+{% endblock %}
+
+{% block script %}
+    {% if has_slug and not as_editor_view %}
+        {# Load seal.js once per page (async, on demand). The fixed identifier
+           deduplicates the tag across multiple seal elements. #}
+        {% add 'ratingstar_seal_js' to body %}
+            {% set rs_script_attributes = attrs()
+                .set('src', seal_js_url)
+                .set('async')
+                .setIfExists('nonce', csp_nonce('script-src'))
+            %}
+            <script{{ rs_script_attributes }}></script>
+        {% endadd %}
+    {% endif %}
+{% endblock %}

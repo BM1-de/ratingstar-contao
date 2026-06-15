@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.1">
+  <file datatype="php" original="contao/languages/en/tl_content.php" source-language="en" target-language="de">
+    <body>
+      <trans-unit id="tl_content.rs_seal_legend">
+        <source>RatingStar settings</source>
+        <target>RatingStar-Einstellungen</target>
+      </trans-unit>
+      <trans-unit id="tl_content.rs_variant.0">
+        <source>Variant</source>
+        <target>Variante</target>
+      </trans-unit>
+      <trans-unit id="tl_content.rs_variant.1">
+        <source>Choose the seal widget variant. Live variants degrade to a static seal automatically on lower plans.</source>
+        <target>Wählen Sie die Siegel-Variante. Live-Varianten werden auf niedrigeren Tarifen automatisch auf ein statisches Siegel reduziert.</target>
+      </trans-unit>
+      <trans-unit id="tl_content.rs_slug.0">
+        <source>Profile slug (override)</source>
+        <target>Profil-Slug (Override)</target>
+      </trans-unit>
+      <trans-unit id="tl_content.rs_slug.1">
+        <source>Overrides the website default slug for this element. Leave empty to use the root page setting.</source>
+        <target>Überschreibt den Standard-Slug der Website für dieses Element. Leer lassen, um die Einstellung der Root-Seite zu verwenden.</target>
+      </trans-unit>
+      <trans-unit id="tl_content.rs_position.0">
+        <source>Position</source>
+        <target>Position</target>
+      </trans-unit>
+      <trans-unit id="tl_content.rs_position.1">
+        <source>Position of the floating badge.</source>
+        <target>Position des Floating-Badges.</target>
+      </trans-unit>
+      <trans-unit id="tl_content.rs_position_options.bottom-right">
+        <source>Bottom right</source>
+        <target>Unten rechts</target>
+      </trans-unit>
+      <trans-unit id="tl_content.rs_position_options.bottom-left">
+        <source>Bottom left</source>
+        <target>Unten links</target>
+      </trans-unit>
+      <trans-unit id="tl_content.rs_position_options.top-right">
+        <source>Top right</source>
+        <target>Oben rechts</target>
+      </trans-unit>
+      <trans-unit id="tl_content.rs_position_options.top-left">
+        <source>Top left</source>
+        <target>Oben links</target>
+      </trans-unit>
+      <trans-unit id="tl_content.rs_position_options.inline">
+        <source>Inline (in text flow)</source>
+        <target>Inline (im Textfluss)</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

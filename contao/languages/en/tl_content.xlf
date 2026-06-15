@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.1">
+  <file datatype="php" original="contao/languages/en/tl_content.php" source-language="en">
+    <body>
+      <trans-unit id="tl_content.rs_seal_legend">
+        <source>RatingStar settings</source>
+      </trans-unit>
+      <trans-unit id="tl_content.rs_variant.0">
+        <source>Variant</source>
+      </trans-unit>
+      <trans-unit id="tl_content.rs_variant.1">
+        <source>Choose the seal widget variant. Live variants degrade to a static seal automatically on lower plans.</source>
+      </trans-unit>
+      <trans-unit id="tl_content.rs_slug.0">
+        <source>Profile slug (override)</source>
+      </trans-unit>
+      <trans-unit id="tl_content.rs_slug.1">
+        <source>Overrides the website default slug for this element. Leave empty to use the root page setting.</source>
+      </trans-unit>
+      <trans-unit id="tl_content.rs_position.0">
+        <source>Position</source>
+      </trans-unit>
+      <trans-unit id="tl_content.rs_position.1">
+        <source>Position of the floating badge.</source>
+      </trans-unit>
+      <trans-unit id="tl_content.rs_position_options.bottom-right">
+        <source>Bottom right</source>
+      </trans-unit>
+      <trans-unit id="tl_content.rs_position_options.bottom-left">
+        <source>Bottom left</source>
+      </trans-unit>
+      <trans-unit id="tl_content.rs_position_options.top-right">
+        <source>Top right</source>
+      </trans-unit>
+      <trans-unit id="tl_content.rs_position_options.top-left">
+        <source>Top left</source>
+      </trans-unit>
+      <trans-unit id="tl_content.rs_position_options.inline">
+        <source>Inline (in text flow)</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

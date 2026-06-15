@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.1">
+  <file datatype="php" original="contao/languages/en/tl_page.php" source-language="en" target-language="de">
+    <body>
+      <trans-unit id="tl_page.ratingstar_legend">
+        <source>RatingStar</source>
+        <target>RatingStar</target>
+      </trans-unit>
+      <trans-unit id="tl_page.rs_slug.0">
+        <source>RatingStar profile slug</source>
+        <target>RatingStar-Profil-Slug</target>
+      </trans-unit>
+      <trans-unit id="tl_page.rs_slug.1">
+        <source>The /t/&lt;slug&gt; handle of your RatingStar location. Drives seal.js and the slug-based endpoints.</source>
+        <target>Der /t/&lt;slug&gt;-Handle Ihrer RatingStar-Filiale. Treibt seal.js und die slug-basierten Endpunkte.</target>
+      </trans-unit>
+      <trans-unit id="tl_page.rs_apiKey.0">
+        <source>RatingStar API key</source>
+        <target>RatingStar-API-Key</target>
+      </trans-unit>
+      <trans-unit id="tl_page.rs_apiKey.1">
+        <source>Format rs_live_ followed by 40 alphanumeric characters. Rename-safe; powers the key-based endpoints and Google stars. Rotate it in the RatingStar admin.</source>
+        <target>Format rs_live_ gefolgt von 40 alphanumerischen Zeichen. Rename-fest; treibt die key-basierten Endpunkte und die Google-Sterne. Im RatingStar-Admin rotierbar.</target>
+      </trans-unit>
+      <trans-unit id="tl_page.rs_baseOrigin.0">
+        <source>Base origin (optional)</source>
+        <target>Base-Origin (optional)</target>
+      </trans-unit>
+      <trans-unit id="tl_page.rs_baseOrigin.1">
+        <source>Origin from which seal.js, data and JSON-LD are loaded. Leave empty to use https://ratingstar.de.</source>
+        <target>Origin, von der seal.js, Daten und JSON-LD geladen werden. Leer lassen für https://ratingstar.de.</target>
+      </trans-unit>
+      <trans-unit id="tl_page.rs_apiKey_invalid">
+        <source>The API key must have the format rs_live_ followed by 40 alphanumeric characters.</source>
+        <target>Der API-Key muss das Format rs_live_ gefolgt von 40 alphanumerischen Zeichen haben.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -6,9 +6,14 @@ namespace RatingStar\ContaoSealBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-// Skeleton only — the actual integration lands via the repo issues:
-// bundle config (profile slug + embed key), seal content element,
-// Google stars JSON-LD.
+/**
+ * RatingStar seal bundle for Contao. The DI extension (RatingStarSealExtension,
+ * alias "rating_star_seal") is auto-discovered by Symfony from the bundle name.
+ */
 class RatingStarSealBundle extends Bundle
 {
+    public function getPath(): string
+    {
+        return \dirname(__DIR__);
+    }
 }

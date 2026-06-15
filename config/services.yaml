@@ -1,0 +1,17 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    RatingStar\ContaoSealBundle\:
+        resource: '../src/'
+        exclude:
+            - '../src/ContaoManager/'
+            - '../src/DependencyInjection/'
+            - '../src/RatingStarSealBundle.php'
+            - '../src/Seal/SealSettings.php'
+            - '../src/Seal/SealVariants.php'
+
+    RatingStar\ContaoSealBundle\Seal\SealSettingsResolver:
+        arguments:
+            $defaultBaseOrigin: '%ratingstar_seal.base_origin%'
