@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * "RatingStar-Siegel" content element. Renders the official embed markup
  *
- *   <div class="rs-seal" data-slug="…" data-variant="…" [data-position="…"]></div>
+ *   <div class="rs-seal" data-slug="…" data-variant="…" [data-position="…"] [data-theme="…"]></div>
  *
  * and loads seal.js once per page (async, on demand — only because a seal is
  * actually rendered). The slug defaults to the website's root page setting and
@@ -46,16 +46,16 @@ class SealController extends AbstractContentElementController
 
         $variant = SealVariants::normalize((string) $model->rs_variant);
 
-        $position = null;
-        if (SealVariants::hasPosition($variant)) {
-            $position = SealVariants::normalizePosition((string) $model->rs_position);
-        }
+        // Empty choices mean "from the RatingStar settings" and emit nothing.
+        $position = SealVariants::hasPosition($variant) ? SealVariants::normalizePosition((string) $model->rs_position) : '';
+        $theme = SealVariants::hasTheme($variant) ? SealVariants::normalizeTheme((string) $model->rs_theme) : '';
 
         $template->set('has_slug', '' !== $slug);
         $template->set('slug', $slug);
         $template->set('variant', $variant);
         $template->set('variant_label', SealVariants::META[$variant]['label']);
-        $template->set('position', $position);
+        $template->set('position', '' !== $position ? $position : null);
+        $template->set('theme', '' !== $theme ? $theme : null);
         $template->set('seal_js_url', $settings->sealJsUrl());
         $template->set('base_origin', $settings->baseOrigin);
 

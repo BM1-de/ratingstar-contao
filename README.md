@@ -13,9 +13,11 @@ Bereits umgesetzt:
   Profil-Slug, API-Key (`rs_live_…`, Format-validiert) und optionale
   Base-Origin (Default `https://ratingstar.de`, kein Host hartkodiert).
 - **Inhaltselement „RatingStar-Siegel"** (`rs_seal`): voller Varianten-Satz
-  (Rundsiegel, Banderole, Profil-Karte, Trust-Bar, Floating Badge, Hero,
-  Featured Quote, Carousel, Wall of Love, Footer-Bar), Position für das
-  Floating-Badge und Slug-Override pro Element. Rendert das offizielle
+  (Rundsiegel, Banderole, Profil-Karte, Bewertungsleiste, Gesamtnote, Zitat,
+  Karussell, Bewertungswand, Fußleiste), Position der Profil-Karte (im Inhalt
+  oder schwebend in einer Ecke), Farbschema hell/dunkel für Bewertungsleiste,
+  Gesamtnote, Zitat, Karussell und Bewertungswand und Slug-Override pro
+  Element. Ältere `floating`-Elemente laufen als Profil-Karte weiter. Rendert das offizielle
   Embed-Markup und lädt `seal.js` einmal pro Seite (async, on demand).
 
 Geplant (folgende Iterationen):

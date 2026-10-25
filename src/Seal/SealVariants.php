@@ -18,7 +18,8 @@ final class SealVariants
 {
     public const DEFAULT = 'seal-circle-banner';
 
-    public const DEFAULT_POSITION = 'bottom-right';
+    /** Empty = the position from the RatingStar settings (no data-position). */
+    public const DEFAULT_POSITION = '';
 
     /**
      * Canonical variant key => [label, category]. Order is the order shown in
@@ -27,32 +28,57 @@ final class SealVariants
      * @var array<string, array{label: string, category: string}>
      */
     public const META = [
-        'seal-circle'        => ['label' => 'Rundsiegel',     'category' => 'static'],
-        'seal-circle-banner' => ['label' => 'Banderole',      'category' => 'static'],
-        'profile-card'       => ['label' => 'Profil-Karte',   'category' => 'live'],
-        'bar'                => ['label' => 'Trust-Bar',       'category' => 'live'],
-        'floating'           => ['label' => 'Floating Badge',  'category' => 'live'],
-        'hero'               => ['label' => 'Hero-Snippet',    'category' => 'live'],
-        'quote'              => ['label' => 'Featured Quote',  'category' => 'live'],
-        'carousel'           => ['label' => 'Carousel',        'category' => 'live'],
-        'wall'               => ['label' => 'Wall of Love',    'category' => 'live'],
-        'footer-bar'         => ['label' => 'Footer-Bar',      'category' => 'live'],
+        'seal-circle'        => ['label' => 'Rundsiegel',       'category' => 'static'],
+        'seal-circle-banner' => ['label' => 'Banderole',        'category' => 'static'],
+        'profile-card'       => ['label' => 'Profil-Karte',     'category' => 'live'],
+        'bar'                => ['label' => 'Bewertungsleiste', 'category' => 'live'],
+        'hero'               => ['label' => 'Gesamtnote',       'category' => 'live'],
+        'quote'              => ['label' => 'Zitat',            'category' => 'live'],
+        'carousel'           => ['label' => 'Karussell',        'category' => 'live'],
+        'wall'               => ['label' => 'Bewertungswand',   'category' => 'live'],
+        'footer-bar'         => ['label' => 'Fußleiste',        'category' => 'live'],
     ];
 
     /**
-     * Variants for which a data-position is meaningful. seal.js only reads
-     * data-position for the floating ("pro") widget.
+     * Legacy names (SealConfig::VARIANT_ALIAS) mapped to the canonical keys.
+     * The former floating badge is the profile card in a screen corner.
      *
-     * @var list<string>
+     * @var array<string, string>
      */
-    public const POSITION_VARIANTS = ['floating'];
+    public const ALIASES = [
+        'circle' => 'seal-circle',
+        'banner' => 'seal-circle-banner',
+        'card' => 'profile-card',
+        'floating' => 'profile-card',
+        'pro' => 'profile-card',
+    ];
 
     /**
-     * Allowed data-position values (seal.js floating corners + inline).
+     * Variants for which a data-position is meaningful: only the profile
+     * card, inline or in a screen corner (CONTRACT.md §4).
      *
      * @var list<string>
      */
-    public const POSITIONS = ['bottom-right', 'bottom-left', 'top-right', 'top-left', 'inline'];
+    public const POSITION_VARIANTS = ['profile-card'];
+
+    /**
+     * Allowed data-position values.
+     *
+     * @var list<string>
+     */
+    public const POSITIONS = ['inline', 'bottom-right', 'bottom-left', 'top-right', 'top-left'];
+
+    /**
+     * Variants with a dark look via data-theme (CONTRACT.md §17).
+     *
+     * @var list<string>
+     */
+    public const THEME_VARIANTS = ['bar', 'hero', 'quote', 'carousel', 'wall'];
+
+    /**
+     * @var list<string>
+     */
+    public const THEMES = ['light', 'dark'];
 
     /**
      * @return list<string>
@@ -70,6 +96,7 @@ final class SealVariants
     public static function normalize(string $variant): string
     {
         $variant = trim($variant);
+        $variant = self::ALIASES[$variant] ?? $variant;
 
         return self::isValid($variant) ? $variant : self::DEFAULT;
     }
@@ -84,5 +111,20 @@ final class SealVariants
         $position = trim($position);
 
         return \in_array($position, self::POSITIONS, true) ? $position : self::DEFAULT_POSITION;
+    }
+
+    public static function hasTheme(string $variant): bool
+    {
+        return \in_array($variant, self::THEME_VARIANTS, true);
+    }
+
+    /**
+     * Empty = the colour scheme from the RatingStar settings (no data-theme).
+     */
+    public static function normalizeTheme(string $theme): string
+    {
+        $theme = trim($theme);
+
+        return \in_array($theme, self::THEMES, true) ? $theme : '';
     }
 }

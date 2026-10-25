@@ -5,7 +5,7 @@
         {# Back end preview: seal.js does not run here, so show a hint instead
            of an empty node. #}
         {% if has_slug %}
-            <p class="tl_gray">RatingStar-Siegel — Variante „{{ variant_label }}", Slug „{{ slug }}"{% if position %}, Position „{{ position }}"{% endif %}</p>
+            <p class="tl_gray">RatingStar-Siegel — Variante „{{ variant_label }}", Slug „{{ slug }}"{% if position %}, Position „{{ position }}"{% endif %}{% if theme %}, Farbschema „{{ theme }}"{% endif %}</p>
         {% else %}
             <p class="tl_gray">RatingStar-Siegel — kein Slug konfiguriert. Slug auf der Root-Seite (RatingStar-Einstellungen) oder hier am Element hinterlegen.</p>
         {% endif %}
@@ -20,6 +20,9 @@
         %}
         {% if position %}
             {% set seal_attributes = seal_attributes.set('data-position', position) %}
+        {% endif %}
+        {% if theme %}
+            {% set seal_attributes = seal_attributes.set('data-theme', theme) %}
         {% endif %}
         <div{{ seal_attributes }}></div>
     {% endif %}

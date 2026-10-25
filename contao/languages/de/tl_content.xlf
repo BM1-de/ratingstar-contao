@@ -27,8 +27,8 @@
         <target>Position</target>
       </trans-unit>
       <trans-unit id="tl_content.rs_position.1">
-        <source>Position of the floating badge.</source>
-        <target>Position des Floating-Badges.</target>
+        <source>Position of the profile card: in the content (inline) or floating in a screen corner.</source>
+        <target>Position der Profil-Karte: im Inhalt (inline) oder schwebend in einer Bildschirmecke.</target>
       </trans-unit>
       <trans-unit id="tl_content.rs_position_options.bottom-right">
         <source>Bottom right</source>
@@ -49,6 +49,26 @@
       <trans-unit id="tl_content.rs_position_options.inline">
         <source>Inline (in text flow)</source>
         <target>Inline (im Textfluss)</target>
+      </trans-unit>
+      <trans-unit id="tl_content.rs_theme.0">
+        <source>Colour scheme</source>
+        <target>Farbschema</target>
+      </trans-unit>
+      <trans-unit id="tl_content.rs_theme.1">
+        <source>Dark adapts the widget to dark page backgrounds.</source>
+        <target>„Dunkel“ passt das Widget an dunkle Seitenhintergründe an.</target>
+      </trans-unit>
+      <trans-unit id="tl_content.rs_theme_options.light">
+        <source>Light</source>
+        <target>Hell</target>
+      </trans-unit>
+      <trans-unit id="tl_content.rs_theme_options.dark">
+        <source>Dark</source>
+        <target>Dunkel</target>
+      </trans-unit>
+      <trans-unit id="tl_content.rs_from_settings">
+        <source>From the RatingStar settings</source>
+        <target>Aus den RatingStar-Einstellungen</target>
       </trans-unit>
     </body>
   </file>
