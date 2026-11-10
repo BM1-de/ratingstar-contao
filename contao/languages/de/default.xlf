@@ -2,13 +2,17 @@
 <xliff version="1.1">
   <file datatype="php" original="contao/languages/en/default.php" source-language="en" target-language="de">
     <body>
-      <trans-unit id="CTE.rs_seal.0">
+      <trans-unit id="CTE.ratingstar_seal.0">
         <source>RatingStar seal</source>
         <target>RatingStar-Siegel</target>
       </trans-unit>
-      <trans-unit id="CTE.rs_seal.1">
-        <source>Embeds the RatingStar seal / Google stars of a location.</source>
-        <target>Bindet das RatingStar-Siegel / die Google-Sterne einer Filiale ein.</target>
+      <trans-unit id="CTE.ratingstar_seal.1">
+        <source>Shows a rating seal or review widget from RatingStar.</source>
+        <target>Zeigt ein Bewertungssiegel oder Bewertungs-Widget von RatingStar.</target>
+      </trans-unit>
+      <trans-unit id="MSC.ratingstar_seal_alt">
+        <source>RatingStar rating seal</source>
+        <target>RatingStar-Bewertungssiegel</target>
       </trans-unit>
     </body>
   </file>

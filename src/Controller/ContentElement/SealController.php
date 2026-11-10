@@ -8,56 +8,62 @@ use Contao\ContentModel;
 use Contao\CoreBundle\Controller\ContentElement\AbstractContentElementController;
 use Contao\CoreBundle\DependencyInjection\Attribute\AsContentElement;
 use Contao\CoreBundle\Twig\FragmentTemplate;
-use Contao\PageModel;
+use RatingStar\ContaoSealBundle\Seal\SealOptions;
 use RatingStar\ContaoSealBundle\Seal\SealSettingsResolver;
 use RatingStar\ContaoSealBundle\Seal\SealVariants;
+use RatingStar\ContaoSealBundle\Seal\SealViewFactory;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * "RatingStar-Siegel" content element. Renders the official embed markup
- *
- *   <div class="rs-seal" data-slug="…" data-variant="…" [data-position="…"] [data-theme="…"]></div>
- *
- * and loads seal.js once per page (async, on demand — only because a seal is
- * actually rendered). The slug defaults to the website's root page setting and
- * can be overridden per element; every embed point offers both a slug override
- * and a variant/position choice (CONTRACT.md §13). The markup, the single
- * seal.js tag and the tier degrade are all left to seal.js — the bundle never
- * rebuilds HTML/CSS, the loader token, the pixel or the client JSON-LD itself
- * (CONTRACT.md §4).
+ * "RatingStar seal" content element. The slug or group defaults to the
+ * setting of the website's root page and can be overridden per element, as
+ * can the variant, the position and the per-embed options.
  */
-#[AsContentElement('rs_seal', category: 'includes', template: 'content_element/rs_seal')]
+#[AsContentElement(self::TYPE, category: 'includes', template: 'content_element/ratingstar_seal')]
 class SealController extends AbstractContentElementController
 {
-    public function __construct(private readonly SealSettingsResolver $resolver)
-    {
+    public const TYPE = 'ratingstar_seal';
+
+    public function __construct(
+        private readonly SealSettingsResolver $resolver,
+        private readonly SealViewFactory $viewFactory,
+    ) {
     }
 
     protected function getResponse(FragmentTemplate $template, ContentModel $model, Request $request): Response
     {
-        $page = $GLOBALS['objPage'] ?? null;
-        $settings = $this->resolver->forPage($page instanceof PageModel ? $page : null);
+        // The back end preview has no current page: resolve the website via
+        // the element's article instead.
+        $page = $this->getPageModel();
+        $settings = null !== $page ? $this->resolver->forPage($page) : $this->resolver->forContentElement($model);
 
-        $slug = trim((string) $model->rs_slug);
-        if ('' === $slug) {
-            $slug = $settings->slug;
+        $variant = SealVariants::normalize((string) $model->ratingstar_variant);
+        $options = [];
+
+        // Only the options of the selected variant; values left over from
+        // another variant stay in the database but are not rendered.
+        foreach (SealOptions::keysForVariant($variant) as $key) {
+            $options[$key] = $model->{SealOptions::column($key)};
         }
 
-        $variant = SealVariants::normalize((string) $model->rs_variant);
+        $seal = $this->viewFactory->create($settings, $variant, [
+            'slug' => (string) $model->ratingstar_slug,
+            'group' => (string) $model->ratingstar_group,
+            'position' => (string) $model->ratingstar_position,
+            'static' => (bool) $model->ratingstar_static,
+            'options' => $options,
+            'attributes' => (string) $model->ratingstar_data_attributes,
+        ]);
 
-        // Empty choices mean "from the RatingStar settings" and emit nothing.
-        $position = SealVariants::hasPosition($variant) ? SealVariants::normalizePosition((string) $model->rs_position) : '';
-        $theme = SealVariants::hasTheme($variant) ? SealVariants::normalizeTheme((string) $model->rs_theme) : '';
+        // Nothing to show to visitors without a slug or group.
+        if (null === $seal && !$this->isBackendScope($request)) {
+            return new Response();
+        }
 
-        $template->set('has_slug', '' !== $slug);
-        $template->set('slug', $slug);
+        $template->set('seal', $seal);
         $template->set('variant', $variant);
-        $template->set('variant_label', SealVariants::META[$variant]['label']);
-        $template->set('position', '' !== $position ? $position : null);
-        $template->set('theme', '' !== $theme ? $theme : null);
-        $template->set('seal_js_url', $settings->sealJsUrl());
-        $template->set('base_origin', $settings->baseOrigin);
+        $template->set('variant_label_key', 'tl_content.ratingstar_variant_options.'.SealVariants::toStorage($variant));
 
         return $template->getResponse();
     }

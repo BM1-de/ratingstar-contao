@@ -1,0 +1,24 @@
+{% extends '@Contao/content_element/_base.html.twig' %}
+
+{% block content %}
+    {% if as_editor_view %}
+        {# Back end preview: seal.js does not run here, so describe the
+           element instead of showing an empty node. #}
+        <p class="tl_gray">
+            {{- variant_label_key|trans({}, 'contao_tl_content') -}}
+            {%- if seal %}
+                {{- ' · ' ~ (seal.subject.isGroup ? 'tl_content.ratingstar_preview_group' : 'tl_content.ratingstar_preview_slug')|trans([seal.subject.id], 'contao_tl_content') -}}
+                {%- if seal.position %}
+                    {{- ' · ' ~ ('tl_content.ratingstar_position_options.' ~ seal.position)|trans({}, 'contao_tl_content') -}}
+                {% endif -%}
+                {%- if seal.static %}
+                    {{- ' · ' ~ 'tl_content.ratingstar_preview_static'|trans({}, 'contao_tl_content') -}}
+                {% endif -%}
+            {%- else %}
+                {{- ' · ' ~ 'tl_content.ratingstar_preview_missing'|trans({}, 'contao_tl_content') -}}
+            {% endif -%}
+        </p>
+    {% elseif seal %}
+        {{ include('@Contao/component/_ratingstar_seal.html.twig', {seal: seal}, with_context = false) }}
+    {% endif %}
+{% endblock %}

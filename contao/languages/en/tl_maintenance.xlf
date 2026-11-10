@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.1">
+  <file datatype="php" original="contao/languages/en/tl_maintenance.php" source-language="en">
+    <body>
+      <trans-unit id="tl_maintenance_jobs.ratingstar_seal.0">
+        <source>Purge the RatingStar data</source>
+      </trans-unit>
+      <trans-unit id="tl_maintenance_jobs.ratingstar_seal.1">
+        <source>Removes the rating data fetched from RatingStar for the Google stars (JSON-LD). It is fetched again with the next page view.</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

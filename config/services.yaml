@@ -2,6 +2,8 @@ services:
     _defaults:
         autowire: true
         autoconfigure: true
+        bind:
+            string $defaultBaseOrigin: '%ratingstar_seal.base_origin%'
 
     RatingStar\ContaoSealBundle\:
         resource: '../src/'
@@ -9,9 +11,19 @@ services:
             - '../src/ContaoManager/'
             - '../src/DependencyInjection/'
             - '../src/RatingStarSealBundle.php'
+            - '../src/Seal/SealOptions.php'
             - '../src/Seal/SealSettings.php'
+            - '../src/Seal/SealSubject.php'
             - '../src/Seal/SealVariants.php'
+            - '../src/Verification/ProfileVerification.php'
 
-    RatingStar\ContaoSealBundle\Seal\SealSettingsResolver:
+    # Cached RatingStar responses live in their own pool (declared in
+    # RatingStarSealExtension::prepend), so they can be cleared separately:
+    # cache:pool:clear ratingstar_seal.cache
+    RatingStar\ContaoSealBundle\JsonLd\JsonLdProvider:
         arguments:
-            $defaultBaseOrigin: '%ratingstar_seal.base_origin%'
+            $cache: '@ratingstar_seal.cache'
+
+    # Called by the back end module "System maintenance" via the container.
+    RatingStar\ContaoSealBundle\Maintenance\CachePurger:
+        public: true

@@ -2,73 +2,505 @@
 <xliff version="1.1">
   <file datatype="php" original="contao/languages/en/tl_content.php" source-language="en" target-language="de">
     <body>
-      <trans-unit id="tl_content.rs_seal_legend">
-        <source>RatingStar settings</source>
-        <target>RatingStar-Einstellungen</target>
+      <trans-unit id="tl_content.ratingstar_legend">
+        <source>RatingStar seal</source>
+        <target>RatingStar-Siegel</target>
       </trans-unit>
-      <trans-unit id="tl_content.rs_variant.0">
+      <trans-unit id="tl_content.ratingstar_variant.0">
         <source>Variant</source>
         <target>Variante</target>
       </trans-unit>
-      <trans-unit id="tl_content.rs_variant.1">
-        <source>Choose the seal widget variant. Live variants degrade to a static seal automatically on lower plans.</source>
-        <target>Wählen Sie die Siegel-Variante. Live-Varianten werden auf niedrigeren Tarifen automatisch auf ein statisches Siegel reduziert.</target>
+      <trans-unit id="tl_content.ratingstar_variant.1">
+        <source>Round seal and banner seal work on every plan. The other variants show live data from the 4-Star plan; below that the banner seal appears automatically.</source>
+        <target>Rundsiegel und Banderole laufen in jedem Tarif. Die übrigen Varianten zeigen Live-Daten ab dem Tarif 4-Star; darunter erscheint automatisch die Banderole.</target>
       </trans-unit>
-      <trans-unit id="tl_content.rs_slug.0">
-        <source>Profile slug (override)</source>
-        <target>Profil-Slug (Override)</target>
+      <trans-unit id="tl_content.ratingstar_variant_options.ratingstar_seal-circle">
+        <source>Round seal</source>
+        <target>Rundsiegel</target>
       </trans-unit>
-      <trans-unit id="tl_content.rs_slug.1">
-        <source>Overrides the website default slug for this element. Leave empty to use the root page setting.</source>
-        <target>Überschreibt den Standard-Slug der Website für dieses Element. Leer lassen, um die Einstellung der Root-Seite zu verwenden.</target>
+      <trans-unit id="tl_content.ratingstar_variant_options.ratingstar_seal-circle-banner">
+        <source>Banner seal</source>
+        <target>Banderole</target>
       </trans-unit>
-      <trans-unit id="tl_content.rs_position.0">
+      <trans-unit id="tl_content.ratingstar_variant_options.ratingstar_profile-card">
+        <source>Profile card</source>
+        <target>Profil-Karte</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_variant_options.ratingstar_bar">
+        <source>Rating bar</source>
+        <target>Bewertungsleiste</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_variant_options.ratingstar_hero">
+        <source>Overall rating</source>
+        <target>Gesamtnote</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_variant_options.ratingstar_quote">
+        <source>Quote</source>
+        <target>Zitat</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_variant_options.ratingstar_carousel">
+        <source>Carousel</source>
+        <target>Karussell</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_variant_options.ratingstar_wall">
+        <source>Review wall</source>
+        <target>Bewertungswand</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_variant_options.ratingstar_footer-bar">
+        <source>Footer bar</source>
+        <target>Fußleiste</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_slug.0">
+        <source>Different branch (profile slug)</source>
+        <target>Andere Filiale (Profil-Slug)</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_slug.1">
+        <source>Leave empty to use the setting of the root page. Only for the seal of another branch: the part after /t/ in the address of its profile.</source>
+        <target>Leer lassen, um die Einstellung der Root-Seite zu verwenden. Nur für das Siegel einer anderen Filiale: der Teil hinter /t/ in der Adresse ihres Profils.</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_group.0">
+        <source>Group (slug)</source>
+        <target>Gruppe (Slug)</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_group.1">
+        <source>Leave empty to use the setting of the root page. Shows the seal of a whole group across all branches: the part after /g/ in the address of the group. Takes precedence over the profile slug. The domain of this website has to be approved in the group back end under “Siegel &amp;amp; Widgets → Domains &amp;amp; Statistik”.</source>
+        <target>Leer lassen, um die Einstellung der Root-Seite zu verwenden. Zeigt das Siegel einer ganzen Gruppe über alle Filialen: der Teil hinter /g/ in der Adresse der Gruppe. Hat Vorrang vor dem Profil-Slug. Die Domain dieser Website muss im Gruppen-Backend unter „Siegel &amp;amp; Widgets → Domains &amp;amp; Statistik“ freigegeben sein.</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_data_attributes.0">
+        <source>Additional data attributes</source>
+        <target>Zusätzliche data-Attribute</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_data_attributes.1">
+        <source>For experts: attributes from the code generator in your RatingStar account (“Siegel &amp;amp; Widgets”), for example data-size="240" data-pc-color="weiss". They override options of the same name above. Only data attributes are accepted; slug, group, variant and position are set with their own fields.</source>
+        <target>Für Fachleute: Attribute aus dem Code-Generator im RatingStar-Konto („Siegel &amp;amp; Widgets“), zum Beispiel data-size="240" data-pc-color="weiss". Sie überschreiben gleichnamige Optionen oben. Angenommen werden nur data-Attribute; Slug, Gruppe, Variante und Position stellen Sie über die eigenen Felder ein.</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_position.0">
         <source>Position</source>
         <target>Position</target>
       </trans-unit>
-      <trans-unit id="tl_content.rs_position.1">
-        <source>Position of the profile card: in the content (inline) or floating in a screen corner.</source>
-        <target>Position der Profil-Karte: im Inhalt (inline) oder schwebend in einer Bildschirmecke.</target>
+      <trans-unit id="tl_content.ratingstar_position.1">
+        <source>In the content at this place, or floating in a corner of the screen.</source>
+        <target>Im Inhalt an dieser Stelle oder schwebend in einer Ecke des Bildschirms.</target>
       </trans-unit>
-      <trans-unit id="tl_content.rs_position_options.bottom-right">
-        <source>Bottom right</source>
-        <target>Unten rechts</target>
+      <trans-unit id="tl_content.ratingstar_position_options.inline">
+        <source>In the content (at this place)</source>
+        <target>Im Inhalt (an dieser Stelle)</target>
       </trans-unit>
-      <trans-unit id="tl_content.rs_position_options.bottom-left">
-        <source>Bottom left</source>
-        <target>Unten links</target>
+      <trans-unit id="tl_content.ratingstar_position_options.bottom-right">
+        <source>Floating, bottom right</source>
+        <target>Schwebend unten rechts</target>
       </trans-unit>
-      <trans-unit id="tl_content.rs_position_options.top-right">
-        <source>Top right</source>
-        <target>Oben rechts</target>
+      <trans-unit id="tl_content.ratingstar_position_options.bottom-left">
+        <source>Floating, bottom left</source>
+        <target>Schwebend unten links</target>
       </trans-unit>
-      <trans-unit id="tl_content.rs_position_options.top-left">
-        <source>Top left</source>
-        <target>Oben links</target>
+      <trans-unit id="tl_content.ratingstar_position_options.top-right">
+        <source>Floating, top right</source>
+        <target>Schwebend oben rechts</target>
       </trans-unit>
-      <trans-unit id="tl_content.rs_position_options.inline">
-        <source>Inline (in text flow)</source>
-        <target>Inline (im Textfluss)</target>
+      <trans-unit id="tl_content.ratingstar_position_options.top-left">
+        <source>Floating, top left</source>
+        <target>Schwebend oben links</target>
       </trans-unit>
-      <trans-unit id="tl_content.rs_theme.0">
+      <trans-unit id="tl_content.ratingstar_static.0">
+        <source>Output as a static image</source>
+        <target>Als statisches Bild ausgeben</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_static.1">
+        <source>Embeds the seal as an image without JavaScript, linked to the profile – for example for print or newsletter versions of a page. Of the options of this variant, only the size or width then applies.</source>
+        <target>Bindet das Siegel als Bild ohne JavaScript ein, verlinkt auf das Profil – zum Beispiel für Druck- oder Newsletter-Fassungen einer Seite. Von den Optionen dieser Variante wirkt dann nur die Größe oder Breite.</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_default_option">
+        <source>Default (portal)</source>
+        <target>Standard (Portal)</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_bool_options.1">
+        <source>Yes</source>
+        <target>Ja</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_bool_options.0">
+        <source>No</source>
+        <target>Nein</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_preview_slug">
+        <source>Branch: %s</source>
+        <target>Filiale: %s</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_preview_group">
+        <source>Group: %s</source>
+        <target>Gruppe: %s</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_preview_static">
+        <source>static image</source>
+        <target>statisches Bild</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_preview_missing">
+        <source>No profile set. Enter the profile slug on the root page (section RatingStar) or on this element.</source>
+        <target>Kein Profil hinterlegt. Tragen Sie den Profil-Slug an der Root-Seite (Abschnitt RatingStar) oder an diesem Element ein.</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_size.0">
+        <source>Size (px)</source>
+        <target>Größe (px)</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_size.1">
+        <source>Width of the seal, 120 to 320 pixels. Empty = default (portal).</source>
+        <target>Breite des Siegels, 120 bis 320 Pixel. Leer = Standard (Portal).</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_pc_width.0">
+        <source>Width (px)</source>
+        <target>Breite (px)</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_pc_width.1">
+        <source>100 to 215 pixels. Empty = default (portal).</source>
+        <target>100 bis 215 Pixel. Leer = Standard (Portal).</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_pc_color.0">
+        <source>Card colour</source>
+        <target>Kartenfarbe</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_pc_color.1">
+        <source>Background of the card.</source>
+        <target>Hintergrund der Karte.</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_pc_color_options.gold">
+        <source>Gold</source>
+        <target>Gold</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_pc_color_options.silber">
+        <source>Silver</source>
+        <target>Silber</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_pc_color_options.weiss">
+        <source>White</source>
+        <target>Weiß</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_pc_show_count.0">
+        <source>Show number of reviews</source>
+        <target>Anzahl der Bewertungen zeigen</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_pc_show_count.1">
+        <source>Shows or hides the number of reviews.</source>
+        <target>Blendet die Anzahl der Bewertungen ein oder aus.</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_pc_mobile.0">
+        <source>On small screens</source>
+        <target>Auf kleinen Bildschirmen</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_pc_mobile.1">
+        <source>Applies to the floating card on screens narrower than 640 pixels.</source>
+        <target>Gilt für die schwebende Karte auf Bildschirmen unter 640 Pixel Breite.</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_pc_mobile_options.compact">
+        <source>Compact pill</source>
+        <target>Kompakte Pille</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_pc_mobile_options.hide">
+        <source>Hide</source>
+        <target>Ausblenden</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_pc_mobile_options.full">
+        <source>Card unchanged</source>
+        <target>Karte unverändert</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_pc_click.0">
+        <source>Click on the card</source>
+        <target>Klick auf die Karte</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_pc_click.1">
+        <source>What a click on the card does.</source>
+        <target>Was ein Klick auf die Karte auslöst.</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_pc_click_options.overlay">
+        <source>Open the review preview on the page</source>
+        <target>Bewertungs-Vorschau auf der Seite öffnen</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_pc_click_options.profile">
+        <source>Go straight to the profile</source>
+        <target>Direkt zum Profil</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_bar_show_count.0">
+        <source>Show number of reviews</source>
+        <target>Anzahl der Bewertungen zeigen</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_bar_show_count.1">
+        <source>Shows or hides the number of reviews.</source>
+        <target>Blendet die Anzahl der Bewertungen ein oder aus.</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_bar_show_verified.0">
+        <source>Show the “Verified” note</source>
+        <target>Hinweis „Verifiziert“ zeigen</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_bar_show_verified.1">
+        <source>The note only appears if all counted reviews are confirmed. It can be hidden here, not forced.</source>
+        <target>Der Hinweis erscheint nur, wenn alle gezählten Bewertungen bestätigt sind. Hier lässt er sich ausblenden, nicht erzwingen.</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_hero_show_count.0">
+        <source>Show number of reviews</source>
+        <target>Anzahl der Bewertungen zeigen</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_hero_show_count.1">
+        <source>Shows or hides the number of reviews.</source>
+        <target>Blendet die Anzahl der Bewertungen ein oder aus.</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_hero_show_verified.0">
+        <source>Show the “Verified” note</source>
+        <target>Hinweis „Verifiziert“ zeigen</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_hero_show_verified.1">
+        <source>The note only appears if all counted reviews are confirmed. It can be hidden here, not forced.</source>
+        <target>Der Hinweis erscheint nur, wenn alle gezählten Bewertungen bestätigt sind. Hier lässt er sich ausblenden, nicht erzwingen.</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_hero_show_branches.0">
+        <source>Show the rating of each branch</source>
+        <target>Note je Filiale zeigen</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_hero_show_branches.1">
+        <source>Group seals only: lists the rating of every branch below the overall rating.</source>
+        <target>Nur bei Gruppen-Siegeln: listet unter der Gesamtnote die Note jeder Filiale.</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_quote_pick.0">
+        <source>Selection</source>
+        <target>Auswahl</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_quote_pick.1">
+        <source>Which review the quote shows.</source>
+        <target>Welche Bewertung das Zitat zeigt.</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_quote_pick_options.best">
+        <source>Best review</source>
+        <target>Beste Bewertung</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_quote_pick_options.newest">
+        <source>Newest review</source>
+        <target>Neueste Bewertung</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_quote_pick_options.rotate">
+        <source>Top 5 in rotation</source>
+        <target>Top 5 im Wechsel</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_quote_pick_options.manual">
+        <source>Review chosen in the portal</source>
+        <target>Im Portal gewählte Bewertung</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_quote_width.0">
+        <source>Width</source>
+        <target>Breite</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_quote_width.1">
+        <source>Width of the widget.</source>
+        <target>Breite des Widgets.</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_quote_width_options.s">
+        <source>S</source>
+        <target>S</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_quote_width_options.m">
+        <source>M</source>
+        <target>M</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_quote_width_options.l">
+        <source>L</source>
+        <target>L</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_quote_width_options.full">
+        <source>Full width</source>
+        <target>Volle Breite</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_car_count.0">
+        <source>Number of reviews</source>
+        <target>Anzahl der Bewertungen</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_car_count.1">
+        <source>3 to 20. Empty = default (portal).</source>
+        <target>3 bis 20. Leer = Standard (Portal).</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_car_rotate.0">
+        <source>Rotation (seconds)</source>
+        <target>Wechsel (Sekunden)</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_car_rotate.1">
+        <source>0 to 30; 0 = no automatic rotation. Empty = default (portal).</source>
+        <target>0 bis 30; 0 = kein automatischer Wechsel. Leer = Standard (Portal).</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_car_min.0">
+        <source>Minimum stars</source>
+        <target>Mindest-Sterne</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_car_min.1">
+        <source>1 to 5: only reviews with at least this many stars. Empty = default (portal).</source>
+        <target>1 bis 5: nur Bewertungen mit mindestens so vielen Sternen. Leer = Standard (Portal).</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_car_width.0">
+        <source>Width</source>
+        <target>Breite</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_car_width.1">
+        <source>Width of the widget.</source>
+        <target>Breite des Widgets.</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_car_width_options.s">
+        <source>S</source>
+        <target>S</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_car_width_options.m">
+        <source>M</source>
+        <target>M</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_car_width_options.l">
+        <source>L</source>
+        <target>L</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_car_width_options.full">
+        <source>Full width</source>
+        <target>Volle Breite</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_wall_cols.0">
+        <source>Columns</source>
+        <target>Spalten</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_wall_cols.1">
+        <source>2 to 4. Empty = default (portal).</source>
+        <target>2 bis 4. Leer = Standard (Portal).</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_wall_total.0">
+        <source>Number of reviews</source>
+        <target>Anzahl der Bewertungen</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_wall_total.1">
+        <source>2 to 50. Empty = default (portal).</source>
+        <target>2 bis 50. Leer = Standard (Portal).</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_wall_min.0">
+        <source>Minimum stars</source>
+        <target>Mindest-Sterne</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_wall_min.1">
+        <source>1 to 5: only reviews with at least this many stars. Empty = default (portal).</source>
+        <target>1 bis 5: nur Bewertungen mit mindestens so vielen Sternen. Leer = Standard (Portal).</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_wall_sort.0">
+        <source>Order</source>
+        <target>Sortierung</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_wall_sort.1">
+        <source>Order of the reviews.</source>
+        <target>Reihenfolge der Bewertungen.</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_wall_sort_options.newest">
+        <source>Newest first</source>
+        <target>Neueste zuerst</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_wall_sort_options.best">
+        <source>Best first</source>
+        <target>Beste zuerst</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_wall_sort_options.mix">
+        <source>Mixed</source>
+        <target>Gemischt</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_wall_width.0">
+        <source>Width</source>
+        <target>Breite</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_wall_width.1">
+        <source>Width of the widget.</source>
+        <target>Breite des Widgets.</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_wall_width_options.m">
+        <source>M</source>
+        <target>M</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_wall_width_options.l">
+        <source>L</source>
+        <target>L</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_wall_width_options.xl">
+        <source>XL</source>
+        <target>XL</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_wall_width_options.full">
+        <source>Full width</source>
+        <target>Volle Breite</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_footer_bar_position.0">
+        <source>Position</source>
+        <target>Position</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_footer_bar_position.1">
+        <source>Fixed at the bottom of the screen, or in the page at the place of the element.</source>
+        <target>Fest am unteren Bildschirmrand oder im Seitenverlauf an der Stelle des Elements.</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_footer_bar_position_options.fixed">
+        <source>Fixed at the bottom of the screen</source>
+        <target>Fest am unteren Bildschirmrand</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_footer_bar_position_options.inline">
+        <source>In the page, at this place</source>
+        <target>Im Seitenverlauf, an dieser Stelle</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_footer_bar_bg.0">
+        <source>Background colour</source>
+        <target>Hintergrundfarbe</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_footer_bar_bg.1">
+        <source>Empty = default (portal).</source>
+        <target>Leer = Standard (Portal).</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_footer_bar_text.0">
+        <source>Text colour</source>
+        <target>Schriftfarbe</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_footer_bar_text.1">
+        <source>Empty = default (portal).</source>
+        <target>Leer = Standard (Portal).</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_footer_bar_link_color.0">
+        <source>Link colour</source>
+        <target>Linkfarbe</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_footer_bar_link_color.1">
+        <source>Empty = default (portal).</source>
+        <target>Leer = Standard (Portal).</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_footer_bar_link_hover.0">
+        <source>Link colour on hover</source>
+        <target>Linkfarbe beim Überfahren</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_footer_bar_link_hover.1">
+        <source>Empty = default (portal).</source>
+        <target>Leer = Standard (Portal).</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_reviews_only_named.0">
+        <source>Only reviews with a name</source>
+        <target>Nur Bewertungen mit Namen</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_reviews_only_named.1">
+        <source>Hides anonymous reviews.</source>
+        <target>Blendet anonyme Bewertungen aus.</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_reviews_only_with_comment.0">
+        <source>Only reviews with text</source>
+        <target>Nur Bewertungen mit Text</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_reviews_only_with_comment.1">
+        <source>Hides reviews without a text.</source>
+        <target>Blendet Bewertungen ohne Text aus.</target>
+      </trans-unit>
+      <trans-unit id="tl_content.ratingstar_theme.0">
         <source>Colour scheme</source>
         <target>Farbschema</target>
       </trans-unit>
-      <trans-unit id="tl_content.rs_theme.1">
-        <source>Dark adapts the widget to dark page backgrounds.</source>
-        <target>„Dunkel“ passt das Widget an dunkle Seitenhintergründe an.</target>
+      <trans-unit id="tl_content.ratingstar_theme.1">
+        <source>“Dark” suits dark page backgrounds.</source>
+        <target>„Dunkel“ passt zu dunklen Seitenhintergründen.</target>
       </trans-unit>
-      <trans-unit id="tl_content.rs_theme_options.light">
+      <trans-unit id="tl_content.ratingstar_theme_options.light">
         <source>Light</source>
         <target>Hell</target>
       </trans-unit>
-      <trans-unit id="tl_content.rs_theme_options.dark">
+      <trans-unit id="tl_content.ratingstar_theme_options.dark">
         <source>Dark</source>
         <target>Dunkel</target>
-      </trans-unit>
-      <trans-unit id="tl_content.rs_from_settings">
-        <source>From the RatingStar settings</source>
-        <target>Aus den RatingStar-Einstellungen</target>
       </trans-unit>
     </body>
   </file>

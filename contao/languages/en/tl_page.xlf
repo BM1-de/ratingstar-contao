@@ -5,26 +5,62 @@
       <trans-unit id="tl_page.ratingstar_legend">
         <source>RatingStar</source>
       </trans-unit>
-      <trans-unit id="tl_page.rs_slug.0">
-        <source>RatingStar profile slug</source>
+      <trans-unit id="tl_page.ratingstar_slug.0">
+        <source>Profile slug of the branch</source>
       </trans-unit>
-      <trans-unit id="tl_page.rs_slug.1">
-        <source>The /t/&lt;slug&gt; handle of your RatingStar location. Drives seal.js and the slug-based endpoints.</source>
+      <trans-unit id="tl_page.ratingstar_slug.1">
+        <source>The part after /t/ in the address of your RatingStar profile. Add the domain of this website in your RatingStar account under “Siegel &amp;amp; Widgets → Domains &amp;amp; Statistik” and confirm it with the DNS record shown there (TXT _ratingstar.your-domain). As soon as a domain is confirmed there, RatingStar delivers the seal data to confirmed domains only.</source>
       </trans-unit>
-      <trans-unit id="tl_page.rs_apiKey.0">
-        <source>RatingStar API key</source>
+      <trans-unit id="tl_page.ratingstar_group.0">
+        <source>Group (slug)</source>
       </trans-unit>
-      <trans-unit id="tl_page.rs_apiKey.1">
-        <source>Format rs_live_ followed by 40 alphanumeric characters. Rename-safe; powers the key-based endpoints and Google stars. Rotate it in the RatingStar admin.</source>
+      <trans-unit id="tl_page.ratingstar_group.1">
+        <source>Only for the seal of a whole group across all branches: the part after /g/ in the address of the group. If filled in, the seals of this website show the group instead of the branch. The domain is then approved in the group back end under “Siegel &amp;amp; Widgets → Domains &amp;amp; Statistik”, and the API key to enter is the key of the group.</source>
       </trans-unit>
-      <trans-unit id="tl_page.rs_baseOrigin.0">
-        <source>Base origin (optional)</source>
+      <trans-unit id="tl_page.ratingstar_api_key.0">
+        <source>API key</source>
       </trans-unit>
-      <trans-unit id="tl_page.rs_baseOrigin.1">
-        <source>Origin from which seal.js, data and JSON-LD are loaded. Leave empty to use https://ratingstar.de.</source>
+      <trans-unit id="tl_page.ratingstar_api_key.1">
+        <source>Starts with rs_live_, followed by 40 characters. You find it in your RatingStar account on the page “Google-Sterne”. It is needed for the Google stars and stays valid when the slug changes. After rotating the key in your RatingStar account, enter the new one here.</source>
       </trans-unit>
-      <trans-unit id="tl_page.rs_apiKey_invalid">
-        <source>The API key must have the format rs_live_ followed by 40 alphanumeric characters.</source>
+      <trans-unit id="tl_page.ratingstar_jsonld.0">
+        <source>Output Google stars (JSON-LD)</source>
+      </trans-unit>
+      <trans-unit id="tl_page.ratingstar_jsonld.1">
+        <source>Writes your company as structured data (LocalBusiness) into the head of every page – the basis for stars in the Google search. Requires the API key; rating and number of reviews are included from the 4-Star plan. Your server fetches the data and keeps it for 6 hours, so the browser of your visitors needs no connection to RatingStar for this.</source>
+      </trans-unit>
+      <trans-unit id="tl_page.ratingstar_base_origin.0">
+        <source>RatingStar address</source>
+      </trans-unit>
+      <trans-unit id="tl_page.ratingstar_base_origin.1">
+        <source>Leave empty for the standard address (shown in the field). The browser of your visitors loads the script, styles, rating data and a counting pixel of the seals from this address. Name it in your privacy policy and take it into account in your consent tool.</source>
+      </trans-unit>
+      <trans-unit id="tl_page.ratingstar_api_key_invalid">
+        <source>The API key starts with rs_live_ followed by exactly 40 letters or digits.</source>
+      </trans-unit>
+      <trans-unit id="tl_page.ratingstar_base_origin_invalid">
+        <source>Please enter the address without a path, for example https://reviews.example.com.</source>
+      </trans-unit>
+      <trans-unit id="tl_page.ratingstar_jsonld_needs_key">
+        <source>The Google stars still need the API key. Without it no structured data is output.</source>
+      </trans-unit>
+      <trans-unit id="tl_page.ratingstar_verify_slug_found">
+        <source>RatingStar profile found: %s</source>
+      </trans-unit>
+      <trans-unit id="tl_page.ratingstar_verify_slug_not_found">
+        <source>There is no RatingStar profile at %s. The profile slug was saved anyway – please check the spelling.</source>
+      </trans-unit>
+      <trans-unit id="tl_page.ratingstar_verify_slug_unavailable">
+        <source>The RatingStar profile at %s could not be checked right now. The profile slug was saved anyway.</source>
+      </trans-unit>
+      <trans-unit id="tl_page.ratingstar_verify_group_found">
+        <source>RatingStar group found: %s</source>
+      </trans-unit>
+      <trans-unit id="tl_page.ratingstar_verify_group_not_found">
+        <source>There is no RatingStar group at %s. The group slug was saved anyway – please check the spelling.</source>
+      </trans-unit>
+      <trans-unit id="tl_page.ratingstar_verify_group_unavailable">
+        <source>The RatingStar group at %s could not be checked right now. The group slug was saved anyway.</source>
       </trans-unit>
     </body>
   </file>

@@ -3,52 +3,74 @@
 declare(strict_types=1);
 
 use Contao\CoreBundle\DataContainer\PaletteManipulator;
-use RatingStar\ContaoSealBundle\Seal\SealSettings;
+use Contao\System;
 
 /*
- * Per-website RatingStar settings (CONTRACT.md §1/§2). Stored on the root page
- * so they are editable per site and multi-domain aware:
- *   - rs_slug:       the /t/<slug> handle, drives seal.js and the slug endpoints
- *   - rs_apiKey:     rs_live_ + 40 alphanumerics, rename-safe key endpoints
- *   - rs_baseOrigin: optional per-site override of the global base origin;
- *                    empty = use the bundle default (rating_star_seal.base_origin)
+ * RatingStar settings of a website, stored on its root page (editable per
+ * website, multi-domain aware):
+ *
+ *   ratingstar_slug         profile slug of the branch (/t/<slug>)
+ *   ratingstar_group        slug of a group (/g/<group>); shows the seal of
+ *                           the whole group instead of a single branch
+ *   ratingstar_api_key      rs_live_ + 40 alphanumerics, for the key-based
+ *                           endpoints (server-side JSON-LD)
+ *   ratingstar_jsonld       print the LocalBusiness JSON-LD (Google stars)
+ *   ratingstar_base_origin  optional override of the bundle's base origin
+ *                           (ratingstar_seal.base_origin)
+ *
+ * Format checks, the slug check and the cache handling are callbacks of
+ * RatingStar\ContaoSealBundle\EventListener\DataContainer\SealSettingsListener.
  */
 
 PaletteManipulator::create()
     ->addLegend('ratingstar_legend', 'global_legend', PaletteManipulator::POSITION_AFTER)
-    ->addField(['rs_slug', 'rs_apiKey', 'rs_baseOrigin'], 'ratingstar_legend', PaletteManipulator::POSITION_APPEND)
+    ->addField(
+        ['ratingstar_slug', 'ratingstar_group', 'ratingstar_api_key', 'ratingstar_jsonld', 'ratingstar_base_origin'],
+        'ratingstar_legend',
+        PaletteManipulator::POSITION_APPEND,
+    )
     ->applyToPalette('root', 'tl_page')
     ->applyToPalette('rootfallback', 'tl_page')
 ;
 
-$GLOBALS['TL_DCA']['tl_page']['fields']['rs_slug'] = [
+$GLOBALS['TL_DCA']['tl_page']['fields']['ratingstar_slug'] = [
     'exclude' => true,
     'inputType' => 'text',
-    'eval' => ['maxlength' => 128, 'tl_class' => 'w50', 'trailingSlash' => false],
+    'eval' => ['maxlength' => 128, 'tl_class' => 'w50'],
     'sql' => ['type' => 'string', 'length' => 128, 'default' => ''],
 ];
 
-$GLOBALS['TL_DCA']['tl_page']['fields']['rs_apiKey'] = [
+$GLOBALS['TL_DCA']['tl_page']['fields']['ratingstar_group'] = [
+    'exclude' => true,
+    'inputType' => 'text',
+    'eval' => ['maxlength' => 128, 'tl_class' => 'w50'],
+    'sql' => ['type' => 'string', 'length' => 128, 'default' => ''],
+];
+
+$GLOBALS['TL_DCA']['tl_page']['fields']['ratingstar_api_key'] = [
     'exclude' => true,
     'inputType' => 'text',
     'eval' => ['maxlength' => 48, 'tl_class' => 'w50', 'placeholder' => 'rs_live_…'],
-    'save_callback' => [
-        static function ($value) {
-            $value = trim((string) $value);
-
-            if ('' !== $value && !SealSettings::isValidApiKey($value)) {
-                throw new \InvalidArgumentException($GLOBALS['TL_LANG']['tl_page']['rs_apiKey_invalid'] ?? 'Invalid RatingStar API key.');
-            }
-
-            return $value;
-        },
-    ],
     'sql' => ['type' => 'string', 'length' => 48, 'default' => ''],
 ];
 
-$GLOBALS['TL_DCA']['tl_page']['fields']['rs_baseOrigin'] = [
+$GLOBALS['TL_DCA']['tl_page']['fields']['ratingstar_jsonld'] = [
+    'exclude' => true,
+    'inputType' => 'checkbox',
+    'eval' => ['tl_class' => 'w50 m12'],
+    'sql' => ['type' => 'boolean', 'default' => false],
+];
+
+$GLOBALS['TL_DCA']['tl_page']['fields']['ratingstar_base_origin'] = [
     'exclude' => true,
     'inputType' => 'text',
-    'eval' => ['rgxp' => 'url', 'maxlength' => 255, 'tl_class' => 'w50', 'placeholder' => 'https://ratingstar.de'],
+    'eval' => [
+        'rgxp' => 'url',
+        'maxlength' => 255,
+        'trailingSlash' => false,
+        'tl_class' => 'w50 clr',
+        // The effective default comes from the bundle configuration.
+        'placeholder' => System::getContainer()->getParameter('ratingstar_seal.base_origin'),
+    ],
     'sql' => ['type' => 'string', 'length' => 255, 'default' => ''],
 ];

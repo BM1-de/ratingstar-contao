@@ -5,43 +5,40 @@ declare(strict_types=1);
 namespace RatingStar\ContaoSealBundle\Seal;
 
 /**
- * Canonical seal.js widget variants — a faithful mirror of the app's
- * SealConfig::VARIANT_META (CONTRACT.md §5). New plugins must offer the FULL
- * set with the canonical keys; do not silently drop variants such as
- * "footer-bar".
+ * Canonical seal.js widget variants — a mirror of the app's
+ * SealConfig::VARIANT_META. The full set is offered with the canonical keys;
+ * the visible names live in the language files
+ * (tl_content.ratingstar_variant_options.*).
  *
  * The three variant namespaces (seal.js data-variant, static SVG ?variant,
- * google-stars ?v) are kept separate on purpose — this class only covers the
- * seal.js data-variant namespace used by the content element.
+ * google-stars ?v) are separate on purpose; this class covers the seal.js
+ * namespace and its mapping onto the static SVG namespace.
  */
 final class SealVariants
 {
     public const DEFAULT = 'seal-circle-banner';
 
-    /** Empty = the position from the RatingStar settings (no data-position). */
-    public const DEFAULT_POSITION = '';
-
     /**
-     * Canonical variant key => [label, category]. Order is the order shown in
-     * the back end select.
+     * Canonical variant keys in the order shown in the back end.
      *
-     * @var array<string, array{label: string, category: string}>
+     * @var list<string>
      */
-    public const META = [
-        'seal-circle'        => ['label' => 'Rundsiegel',       'category' => 'static'],
-        'seal-circle-banner' => ['label' => 'Banderole',        'category' => 'static'],
-        'profile-card'       => ['label' => 'Profil-Karte',     'category' => 'live'],
-        'bar'                => ['label' => 'Bewertungsleiste', 'category' => 'live'],
-        'hero'               => ['label' => 'Gesamtnote',       'category' => 'live'],
-        'quote'              => ['label' => 'Zitat',            'category' => 'live'],
-        'carousel'           => ['label' => 'Karussell',        'category' => 'live'],
-        'wall'               => ['label' => 'Bewertungswand',   'category' => 'live'],
-        'footer-bar'         => ['label' => 'Fußleiste',        'category' => 'live'],
+    public const KEYS = [
+        'seal-circle',
+        'seal-circle-banner',
+        'profile-card',
+        'bar',
+        'hero',
+        'quote',
+        'carousel',
+        'wall',
+        'footer-bar',
     ];
 
     /**
      * Legacy names (SealConfig::VARIANT_ALIAS) mapped to the canonical keys.
-     * The former floating badge is the profile card in a screen corner.
+     * They are still accepted but never offered. The former floating badge
+     * is the profile card placed in a screen corner.
      *
      * @var array<string, string>
      */
@@ -54,77 +51,97 @@ final class SealVariants
     ];
 
     /**
-     * Variants for which a data-position is meaningful: only the profile
-     * card, inline or in a screen corner (CONTRACT.md §4).
+     * Variants that exist as a static SVG, mapped to the ?variant value of
+     * /seal/<slug>.svg. Live-only variants have no static motif, so a static
+     * mode is never offered for them.
      *
-     * @var list<string>
+     * @var array<string, string>
      */
-    public const POSITION_VARIANTS = ['profile-card'];
+    public const STATIC_SVG = [
+        'seal-circle' => 'circle',
+        'seal-circle-banner' => 'banner',
+        'profile-card' => 'card',
+    ];
 
     /**
-     * Allowed data-position values.
+     * Display width in px of a static image without a size option — the
+     * widths seal.js falls back to when it has no configuration.
+     *
+     * @var array<string, int>
+     */
+    public const STATIC_FALLBACK_WIDTH = [
+        'circle' => 280,
+        'banner' => 280,
+        'card' => 168,
+    ];
+
+    /**
+     * Allowed data-position values (profile card only).
      *
      * @var list<string>
      */
     public const POSITIONS = ['inline', 'bottom-right', 'bottom-left', 'top-right', 'top-left'];
 
     /**
-     * Variants with a dark look via data-theme (CONTRACT.md §17).
-     *
-     * @var list<string>
+     * Prefix of the value stored in tl_content.ratingstar_variant. Contao
+     * probes every selector value as a palette name BEFORE the element type
+     * ("bar", "hero" or "quote" would pick up a palette of that name from
+     * another bundle), so the stored value must not be a generic word.
      */
-    public const THEME_VARIANTS = ['bar', 'hero', 'quote', 'carousel', 'wall'];
-
-    /**
-     * @var list<string>
-     */
-    public const THEMES = ['light', 'dark'];
-
-    /**
-     * @return list<string>
-     */
-    public static function keys(): array
-    {
-        return array_keys(self::META);
-    }
+    public const STORAGE_PREFIX = 'ratingstar_';
 
     public static function isValid(string $variant): bool
     {
-        return isset(self::META[$variant]);
+        return \in_array($variant, self::KEYS, true);
     }
 
+    /**
+     * Maps a stored, legacy or user-supplied value onto a canonical key.
+     * Unknown values fall back to the default (the render fallback of seal.js).
+     */
     public static function normalize(string $variant): string
     {
-        $variant = trim($variant);
+        $variant = strtolower(trim($variant));
+
+        if (str_starts_with($variant, self::STORAGE_PREFIX)) {
+            $variant = substr($variant, \strlen(self::STORAGE_PREFIX));
+        }
+
         $variant = self::ALIASES[$variant] ?? $variant;
 
         return self::isValid($variant) ? $variant : self::DEFAULT;
     }
 
-    public static function hasPosition(string $variant): bool
+    public static function toStorage(string $variant): string
     {
-        return \in_array($variant, self::POSITION_VARIANTS, true);
-    }
-
-    public static function normalizePosition(string $position): string
-    {
-        $position = trim($position);
-
-        return \in_array($position, self::POSITIONS, true) ? $position : self::DEFAULT_POSITION;
-    }
-
-    public static function hasTheme(string $variant): bool
-    {
-        return \in_array($variant, self::THEME_VARIANTS, true);
+        return self::STORAGE_PREFIX.$variant;
     }
 
     /**
-     * Empty = the colour scheme from the RatingStar settings (no data-theme).
+     * @return list<string>
      */
-    public static function normalizeTheme(string $theme): string
+    public static function storageValues(): array
     {
-        $theme = trim($theme);
+        return array_map(self::toStorage(...), self::KEYS);
+    }
 
-        return \in_array($theme, self::THEMES, true) ? $theme : '';
+    public static function hasPosition(string $variant): bool
+    {
+        return 'profile-card' === $variant;
+    }
+
+    /**
+     * Empty = no data-position, the position from the RatingStar portal applies.
+     */
+    public static function normalizePosition(string $position): string
+    {
+        $position = strtolower(trim($position));
+
+        return \in_array($position, self::POSITIONS, true) ? $position : '';
+    }
+
+    public static function staticSvgVariant(string $variant): string|null
+    {
+        return self::STATIC_SVG[$variant] ?? null;
     }
 }

@@ -1,0 +1,35 @@
+{#
+    One RatingStar seal — shared by the content element and the
+    ratingstar_seal() Twig function. Expects "seal" as built by
+    RatingStar\ContaoSealBundle\Seal\SealViewFactory.
+#}
+{% if seal.static %}
+    {# Static image without JavaScript, linked to the public profile
+       (no nofollow). Only offered for variants that exist as an SVG. #}
+    {% do csp_source('img-src', seal.origin) %}
+    {% set seal_image_attributes = attrs()
+        .addClass('rs-seal-static')
+        .set('src', seal.static.src)
+        .set('alt', 'MSC.ratingstar_seal_alt'|trans({}, 'contao_default'))
+        .set('width', seal.static.width)
+        .set('loading', 'lazy')
+        .set('decoding', 'async')
+    %}
+    <a class="rs-seal-static-link" href="{{ seal.profile_url }}" target="_blank" rel="noopener"><img{{ seal_image_attributes }}></a>
+{% else %}
+    {# Official embed markup. seal.js finds every .rs-seal node of the page
+       and renders (or degrades) the widget itself; attrs() escapes all
+       attribute values. #}
+    <div{{ attrs().addClass('rs-seal').mergeWith(seal.attributes) }}></div>
+
+    {# seal.js loads its style sheet, the widget data and the counting pixel
+       from the RatingStar origin: announce it to an active Content Security
+       Policy (a no-op without one). #}
+    {% do csp_source(['script-src', 'style-src', 'connect-src', 'img-src'], seal.origin) %}
+
+    {# One seal.js per page, however many seals it shows: the fixed key
+       makes later seals replace the same entry. #}
+    {% add 'ratingstar_seal_js' to body %}
+        <script{{ attrs().set('src', seal.script_url).set('async').setIfExists('nonce', csp_nonce('script-src')) }}></script>
+    {% endadd %}
+{% endif %}
