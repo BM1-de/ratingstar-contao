@@ -2,7 +2,7 @@
 
 RatingStar ist das Bewertungstool für Unternehmen: Kundenbewertungen sammeln, Bewertungen aus Google und anderen Portalen bündeln und alles mit Siegeln auf der eigenen Website zeigen. Dieses Bundle bringt die Siegel und Widgets von [RatingStar](https://ratingstar.de) in Ihre Contao-Website und liefert Google die Daten für die Sterne in der Suche.
 
-**Stand:** Version 1.0 in Vorbereitung, noch nicht auf Packagist veröffentlicht.
+**Installation:** über den Contao Manager (Suche nach „RatingStar“) oder `composer require ratingstar/contao-seal-bundle`.
 
 ## Funktionen
 

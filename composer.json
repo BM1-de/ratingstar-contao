@@ -3,6 +3,29 @@
     "description": "RatingStar-Siegel, Bewertungs-Widgets und Google-Sterne (Rich Snippets) für Contao.",
     "type": "contao-bundle",
     "license": "GPL-2.0-or-later",
+    "keywords": [
+        "contao",
+        "contao-bundle",
+        "ratingstar",
+        "reviews",
+        "customer reviews",
+        "review widget",
+        "rich snippets",
+        "seal"
+    ],
+    "homepage": "https://ratingstar.de/plugins",
+    "authors": [
+        {
+            "name": "Baumgärtner Marketing GmbH",
+            "homepage": "https://bm1.de"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/BM1-de/ratingstar-contao/issues",
+        "source": "https://github.com/BM1-de/ratingstar-contao",
+        "docs": "https://github.com/BM1-de/ratingstar-contao#readme",
+        "forum": "https://ratingstar.de/support"
+    },
     "require": {
         "php": "^8.2",
         "contao/core-bundle": "^5.3",
