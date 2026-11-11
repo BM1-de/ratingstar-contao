@@ -70,9 +70,9 @@ final class SealVariants
      * @var array<string, int>
      */
     public const STATIC_FALLBACK_WIDTH = [
-        'circle' => 280,
-        'banner' => 280,
-        'card' => 168,
+        'circle' => 200,
+        'banner' => 200,
+        'card' => 120,
     ];
 
     /**
