@@ -14,7 +14,7 @@ namespace RatingStar\ContaoSealBundle\Seal;
  *                   key-based endpoints (server-side JSON-LD). With a group
  *                   set this is the key of the group.
  *  - baseOrigin:    the one origin every RatingStar URL is built from
- *  - jsonLdEnabled: print the server-side LocalBusiness JSON-LD block
+ *  - jsonLdEnabled: print the server-side JSON-LD block
  */
 final class SealSettings
 {
@@ -81,9 +81,12 @@ final class SealSettings
 
     /**
      * Key-based JSON-LD endpoint; a group key returns the block of the group.
+     * `schema=product` tells RatingStar that this bundle can print the Product
+     * type; whether the answer is a Product or a LocalBusiness is set in the
+     * RatingStar backend.
      */
     public function jsonLdUrl(): string
     {
-        return $this->url('/seal/k/'.rawurlencode($this->apiKey).'.jsonld');
+        return $this->url('/seal/k/'.rawurlencode($this->apiKey).'.jsonld?schema=product');
     }
 }

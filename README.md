@@ -101,9 +101,9 @@ Für Fachleute: Im RatingStar-Konto erzeugt der Code-Generator unter „Siegel &
 
 ## Google-Sterne (JSON-LD)
 
-Ist **Google-Sterne ausgeben (JSON-LD)** angekreuzt und ein API-Key eingetragen, schreibt das Bundle in den Kopf jeder Seite der Website genau einen Block mit strukturierten Daten vom Typ `LocalBusiness`. Google kann daraus die Sterne neben Ihrem Suchergebnis bilden. Ob und wann Google Sterne anzeigt, entscheidet allein Google.
+Ist **Google-Sterne ausgeben (JSON-LD)** angekreuzt und ein API-Key eingetragen, schreibt das Bundle in den Kopf jeder Seite der Website genau einen Block mit strukturierten Daten (schema.org). Google kann daraus die Sterne neben Ihrem Suchergebnis bilden. Ob und wann Google Sterne anzeigt, entscheidet allein Google.
 
-- Note und Anzahl enthält der Block ab dem Tarif 4-Star und sobald es Bewertungen gibt, die bei RatingStar selbst abgegeben wurden. Aus anderen Portalen übernommene Bewertungen zählen hier nicht mit. Darunter enthält der Block nur den Namen und den Link zum Profil.
+- Note und Anzahl enthält der Block ab dem Tarif 4-Star und sobald es Bewertungen gibt. Es zählen dieselben Bewertungen wie in Ihrem Siegel. Darunter enthält der Block nur den Namen und den Link zum Profil.
 - Die Daten holt Ihr Server bei RatingStar ab und hält sie 6 Stunden vor. Ist RatingStar einmal nicht erreichbar oder der Key ungültig, fehlt der Block; die Seite selbst bleibt unverändert. Der nächste Versuch folgt nach 15 Minuten.
 - Die Siegel der Website verzichten dann auf ihren eigenen Datenblock, damit die Angaben nicht doppelt auf der Seite stehen.
 - Rotieren Sie den Key im RatingStar-Konto, wird der alte ungültig. Tragen Sie den neuen Key an der Root-Seite ein.
@@ -200,7 +200,7 @@ oder für eine einzelne Website im Feld **RatingStar-Adresse** der Root-Seite. E
 - **Kein Siegel auf der Seite:** Ist an der Root-Seite ein Profil-Slug oder eine Gruppe eingetragen? In der Vorschau des Elements im Backend steht, welche Filiale oder Gruppe es zeigt.
 - **Der Platz bleibt leer:** Prüfen Sie die Freigabe der Domain im RatingStar-Konto. Blockiert ein Consent-Tool oder ein Werbeblocker die Verbindung zu RatingStar, bleibt der Platz ebenfalls leer.
 - **Statt des Widgets erscheint die Banderole:** Die gewählte Variante gehört zu einem höheren Tarif.
-- **Keine Sterne bei Google:** Prüfen Sie API-Key und Ankreuzfeld, leeren Sie den Zwischenspeicher und sehen Sie im Seitenquelltext nach einem Block `application/ld+json` mit `LocalBusiness`. Google zeigt Sterne erst nach einem erneuten Besuch der Seite und nach eigenem Ermessen.
+- **Keine Sterne bei Google:** Prüfen Sie API-Key und Ankreuzfeld, leeren Sie den Zwischenspeicher und sehen Sie im Seitenquelltext nach einem Block `application/ld+json` mit `aggregateRating`. Google zeigt Sterne erst nach einem erneuten Besuch der Seite und nach eigenem Ermessen.
 
 ## Entwicklung
 

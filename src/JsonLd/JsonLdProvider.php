@@ -12,7 +12,7 @@ use Symfony\Contracts\HttpClient\Exception\ExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 /**
- * Fetches the ready-made LocalBusiness JSON-LD of a website from the
+ * Fetches the ready-made JSON-LD of a website from the
  * key-based endpoint /seal/k/<key>.jsonld — on the server, so the visitor's
  * browser needs no connection to RatingStar for the Google stars.
  *
@@ -26,6 +26,9 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
  */
 class JsonLdProvider
 {
+    /** schema.org types RatingStar answers with (set in the RatingStar backend). */
+    public const ACCEPTED_TYPES = ['LocalBusiness', 'Product'];
+
     public const TTL_SUCCESS = 21600;
     public const TTL_FAILURE = 900;
 
@@ -83,8 +86,8 @@ class JsonLdProvider
     }
 
     /**
-     * Decodes a remote body, accepts it only as a LocalBusiness object and
-     * re-encodes it for output inside a script block. The remote response is
+     * Decodes a remote body, accepts it only as an object of an accepted
+     * schema.org type (LocalBusiness or Product) and re-encodes it for output inside a script block. The remote response is
      * never printed as raw text.
      */
     public function sanitize(string $body): string|null
@@ -99,7 +102,7 @@ class JsonLdProvider
             return null;
         }
 
-        if (!\is_array($data) || 'LocalBusiness' !== ($data['@type'] ?? null)) {
+        if (!\is_array($data) || !\in_array($data['@type'] ?? null, self::ACCEPTED_TYPES, true)) {
             return null;
         }
 
@@ -205,7 +208,7 @@ class JsonLdProvider
         }
 
         if (null === $json) {
-            $this->logger?->notice(\sprintf('RatingStar: JSON-LD response of %s is not a LocalBusiness object.', $settings->baseOrigin));
+            $this->logger?->notice(\sprintf('RatingStar: JSON-LD response of %s is not a LocalBusiness or Product object.', $settings->baseOrigin));
         }
 
         return $json;

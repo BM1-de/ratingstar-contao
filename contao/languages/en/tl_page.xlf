@@ -27,7 +27,7 @@
         <source>Output Google stars (JSON-LD)</source>
       </trans-unit>
       <trans-unit id="tl_page.ratingstar_jsonld.1">
-        <source>Writes your company as structured data (LocalBusiness) into the head of every page – the basis for stars in the Google search. Requires the API key; rating and number of reviews are included from the 4-Star plan. Your server fetches the data and keeps it for 6 hours, so the browser of your visitors needs no connection to RatingStar for this.</source>
+        <source>Writes your company as structured data into the head of every page – the basis for stars in the Google search. Requires the API key; rating and number of reviews are included from the 4-Star plan. Your server fetches the data and keeps it for 6 hours, so the browser of your visitors needs no connection to RatingStar for this.</source>
       </trans-unit>
       <trans-unit id="tl_page.ratingstar_base_origin.0">
         <source>RatingStar address</source>

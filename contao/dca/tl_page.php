@@ -14,7 +14,7 @@ use Contao\System;
  *                           the whole group instead of a single branch
  *   ratingstar_api_key      rs_live_ + 40 alphanumerics, for the key-based
  *                           endpoints (server-side JSON-LD)
- *   ratingstar_jsonld       print the LocalBusiness JSON-LD (Google stars)
+ *   ratingstar_jsonld       print the JSON-LD (Google stars)
  *   ratingstar_base_origin  optional override of the bundle's base origin
  *                           (ratingstar_seal.base_origin)
  *

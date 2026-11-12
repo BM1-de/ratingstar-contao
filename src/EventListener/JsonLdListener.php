@@ -13,7 +13,7 @@ use RatingStar\ContaoSealBundle\Seal\SealSettingsResolver;
 use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
 
 /**
- * Prints the server-side LocalBusiness JSON-LD (Google stars) into the
+ * Prints the server-side JSON-LD (Google stars) into the
  * <head> of every regular page of a website that has it switched on — exactly
  * one block per page. The seals of such a page carry data-no-richsnippet, so
  * seal.js does not add a second block.
